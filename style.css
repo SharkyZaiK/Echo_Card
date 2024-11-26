@@ -1,0 +1,76 @@
+/* 全局樣式 */
+body {
+    margin: 0;
+    font-family: "Courier New", monospace;
+    background-color: #001f33;
+    color: #00ffff;
+    overflow: hidden;
+    background: linear-gradient(to right, #001f33, #002b40);
+    background-size: 200% 200%;
+    animation: bg-move 5s infinite linear;
+}
+
+/* 容器樣式 */
+.container {
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+    border: 1px solid #00ffff;
+    border-radius: 10px;
+    background: rgba(0, 31, 51, 0.9);
+    box-shadow: 0 0 15px #00ffff;
+    line-height: 1.8;
+    position: relative;
+}
+
+/* 頁面頂部按鈕 */
+.header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* 按鈕樣式 */
+.button {
+    background: none;
+    border: 1px solid #00ffff;
+    color: #00ffff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    text-transform: uppercase;
+    font-family: inherit;
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff;
+}
+
+.button:hover {
+    background: #00ffff;
+    color: #001f33;
+    box-shadow: 0 0 10px #00ffff;
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+/* 文字內容樣式 */
+.text-content {
+    margin-top: 20px;
+}
+
+/* 隱藏訊息樣式 */
+.hidden-message {
+    display: none;
+    margin-top: 20px;
+    background: #002b40;
+    padding: 10px;
+    border: 1px solid #00ffff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #00ffff;
+}
+
+/* 背景動畫 */
+@keyframes bg-move {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 0%; }
+}
