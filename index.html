@@ -3,42 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Echo's Card</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f9;
-            color: #333;
-            padding: 20px;
-        }
-        .card {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        .message {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        .signature {
-            margin-top: 30px;
-            font-style: italic;
-        }
-    </style>
+    <title>Futuristic Page</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="card">
-        <h1>Dear Friend,</h1>
-        <p class="message">
-            This card is a special message from Echo. <br>
-            You are amazing, and I hope this little token brightens your day! <br>
-            Let the light guide you to endless possibilities.
-        </p>
-        <p class="signature">- Echo</p>
+    <div class="container">
+        <div class="header">
+            <button class="button" id="close-btn">Close</button>
+            <button class="button" id="back-btn">Back</button>
+        </div>
+        <div class="text-content">
+            <p>Welcome to the futuristic page. This is a simulation of a sci-fi styled document.</p>
+            <p>Click the button below for a hidden surprise:</p>
+            <button class="button" id="reveal-btn">Reveal Hidden Message</button>
+        </div>
+        <div class="hidden-message" id="hidden-msg">
+            <p>This is a hidden message, revealed only to the worthy!</p>
+        </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
