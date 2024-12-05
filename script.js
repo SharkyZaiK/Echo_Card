@@ -59,3 +59,19 @@ function playSound(src) {
     const audio = new Audio(src);
     audio.play();
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const guessInput = document.getElementById("guess-input");
+    const guessButton = document.getElementById("guess-button");
+
+    guessButton.addEventListener("click", () => {
+        const userGuess = guessInput.value.trim().toLowerCase();
+        if (userGuess === "迴音"||"Echo"||"echo") {
+            alert("你猜對了!");
+        } else {
+            alert("再猜猜看?");
+        }
+        guessInput.value = ""; // 清空輸入框
+    });
+});

@@ -6,26 +6,31 @@ body {
     /* 圖片居中對齊 */
     font-family: 'Customfont', monospace;
     color: #00ffff;
-    overflow: hidden;
+    overflow: auto;
+    height: 100%;
 }
 
 .main-screen {
+    position: relative;
     width: 80%;
-    height: 80vh;
-    margin: auto;
+    max-width: 1200px; /* 限制最大寬度 */
+    margin:  auto; /* 水平與垂直居中 */
+    height: auto;
     background: #ffffff00; /* 半透明黑色背景 */
     border-radius: 20px; /* 圓角效果 */
     border: 1px solid rgba(255, 255, 255, 0.3); /* 半透明邊框 */
-    
+    padding: 20px; /* 添加內邊距，避免子元素緊貼邊緣 */
     box-shadow: 
     0 0 10px #ffffff, /* 發光的核心 */
     0 0 20px #ffffff; /* 發光的擴散 */
-    
-    padding: 20px; /* 內邊距 */
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
+    gap:20px;
+    align-items: flex-start; /* 子元素頂部對齊 */
     color: #00ffff; /* 青藍色文字 */
+    overflow: auto; /* 防止內容溢出 */
 }
 
 .mail-header {
@@ -33,30 +38,50 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 30px 20px;
     color: #00ffff;
-    font-size: 18px;
+    margin-bottom: 20px;
+    font-size: 22px;
     font-family: 'CustomFont', monospace;
+}
+
+.mail-content{
+    text-align: left; /* 文字靠左對齊 */
+    font-size: 16px; /* 字體大小 */
+    line-height: 1.6; /* 行距 */
+    margin: 20px 0; /* 與其他元素保持距離 */
+    width: 100%; /* 文字容器占滿可用空間 */
+    font-family: "Customfont";
+    color:#00ffff;
+
 }
 /* 按鈕區域 */
 .mail-controls {
     display: flex;
     gap: 10px;
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 20px 0;
 }
 
 .mail-button {
+    position: absolute;
+    top: 10px; /* 距離頂部 */
+    right: 20px; /* 距離右側 */
+    display: flex;
+    gap: 10px; /* 按鈕之間的距離 */
+}
+
+.mail-button button{
     background: none;
     border: 1px solid #00ffff;
+    border-radius: 50%; /* 圓形按鈕 */
     color: #00ffff;
     width: 30px;
     height: 30px;
-    border-radius: 50%; /* 圓形按鈕 */
-    font-size: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s ease;
 }
 
 .header {
@@ -81,23 +106,24 @@ body {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
+    gap:20px;
 }
 
 /* 視窗樣式 */
 .window-container {
-    width: 45%;
-    height: 300px;
+    flex: 1 1 45%; /* 每行最多顯示兩個視窗，寬度為45% */
+    min-width: 300px;
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 20px;
     background: rgba(0, 52, 104, 0.53); /* 半透明背景 */
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
     overflow: hidden;
-    
-
     box-shadow: 
     0 0 5px #3cf2ff, /* 發光的核心 */
     0 0 10px #3cf2ff; /* 發光的擴散 */
-    
     display: flex;
     flex-direction: column;
 }
@@ -109,6 +135,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
+    padding-top: 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -178,6 +205,7 @@ body {
     padding: 10px;
     color: white;
     font-size: 14px;
+    text-align: left;
 }
 
 /* 按鈕樣式 */
@@ -185,6 +213,7 @@ body {
     display: block;
     margin: 10px 0;
     padding: 10px 20px;
+    font-size: 14px;
     background: rgba(0, 255, 255, 0.3);
     color: #00ffff;
     border: 1px solid rgba(0, 255, 255, 0.5);
@@ -218,6 +247,39 @@ body {
     color: #00ffff;
     padding: 5px;
 }
+
+/* 跑馬燈容器樣式 */
+.neon-marquee {
+    position: absolute;
+    top: 10px; /* 距離頂部的距離 */
+    right: 100px; /* 距離右邊的距離 */
+    width: calc(100% - 200px); /* 寬度自適應，避免過於靠右 */
+    overflow: hidden; /* 限制內容不超出 */
+    white-space: nowrap; /* 確保文字在一行內 */
+    border: 1px solid rgba(255, 255, 255, 0); /* 可選的邊框 */
+    z-index: 1;
+    border-radius: 5px;
+}
+
+/* 跑馬燈文字樣式 */
+.neon-marquee span {
+    display: inline-block;
+    color: #ffffff; /* 霓虹色文字 */
+    font-size: 14px;
+    font-family: "Roboto Mono";
+    animation: scroll 10s linear infinite; /* 跑馬燈動畫 */
+}
+
+/* 跑馬燈動畫效果 */
+@keyframes scroll {
+    0% {
+        transform: translateX(100%); /* 從右側開始 */
+    }
+    100% {
+        transform: translateX(-100%); /* 向左側移動直到消失 */
+    }
+}
+ 
 
 @keyframes glow {
     0% {
@@ -256,4 +318,115 @@ body {
     position: absolute;
     pointer-events: none;
     transition: transform 0.1s;
+}
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column; /* 改為垂直排列 */
+        gap: 15px; /* 減少間距，適配小螢幕 */
+    }
+
+    .window-container {
+        width: 100%; /* 單列顯示 */
+        margin-bottom: 15px; /* 保留底部間距 */
+    }
+}
+
+/* 響應式設計：手機與平板 */
+@media (max-width: 1024px) {
+    .main-screen {
+        flex-direction: column; /* 垂直排列 */
+        gap: 15px; /* 區塊間距縮小 */
+    }
+
+    .window-container {
+        width: 100%; /* 單列顯示 */
+        height: auto; /* 高度自適應內容 */
+    }
+
+    .window-header {
+        font-size: 14px; /* 標題文字縮小 */
+    }
+
+    .window-content {
+        font-size: 12px; /* 內容文字縮小 */
+        padding: 10px;
+    }
+
+    .action-button {
+        font-size: 14px; /* 按鈕文字縮小 */
+        padding: 8px 16px; /* 按鈕尺寸調整 */
+    }
+}
+
+/* 響應式設計：桌面與大螢幕 */
+@media (min-width: 1025px) {
+    .main-screen {
+        flex-direction: row; /* 水平排列 */
+        justify-content: space-between;
+    }
+
+    .window-container {
+        width: 45%; /* 每行顯示兩個視窗 */
+    }
+}
+
+/* 禮物清單 & 猜猜我是誰的窗口樣式 */
+.gift-window, .guess-window {
+    background: rgba(0, 31, 51, 0.8);
+    border: 2px solid #00ffff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #00ffff;
+    width: 80%;
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+/* 頭部樣式 */
+.window-header {
+    background: linear-gradient(to right, #002b40, #00ffff);
+    padding: 5px 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+/* 標題樣式 */
+.window-title {
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* 內容樣式 */
+.window-content {
+    padding: 10px;
+    color: #00ffff;
+    text-align: center;
+}
+
+/* 禮物圖片 */
+.gift-icon {
+    width: 50%;
+    margin: 10px auto;
+    display: block;
+}
+
+/* 輸入框和按鈕 */
+#guess-input {
+    width: 80%;
+    margin: 10px 0;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #00ffff;
+    border-radius: 5px;
+}
+
+#guess-button {
+    padding: 5px 15px;
+    font-size: 16px;
+    background: #002b40;
+    color: #00ffff;
+    border: 1px solid #00ffff;
+    border-radius: 5px;
+    cursor: pointer;
 }

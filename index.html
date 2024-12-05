@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
     <div class="main-screen">
+        
+        <div class="mail-button">
+            <button>-</button>
+            <button>x</button>
+        </div>
+        <div class="neon-marquee">
+            <span>這是你的跑馬燈文字，帶有霓虹效果的跑馬燈！ Merry Christmas! 🎄✨</span>
+        </div>
         <div class="mail-header">
             <div class="mail-title">聖誕快樂，我的朋友!</div>
-            <div class="mail-controls">
-                <span class="mail-button minimize">-</span>
-                <span class="mail-button close">x</span>
-            </div>
         </div>
         <div class="mail-content">
             <p>這是一封科幻風格的信件內容，展示一個模擬郵件樣式的介面。</p>
@@ -33,8 +39,8 @@
                 <div class="window-content">
                     <p>Loading system diagnostics...</p>
                     <p>Merry Christmas</p>
-                    <button class="action-button">禮物清單</button>
-                    <button class="action-button">猜猜我是誰?</button>
+                    <a href="gifts.html" class="action-button">禮物清單</a>
+                    <a href="guess.html" class="action-button">猜猜我是誰?</a>
                     
                 </div>
             </div>
@@ -50,9 +56,6 @@
                     </div>
                 </div>
                 <div class="window-content">
-                    <div class="data-stream">
-                        <p id="data">Initializing...</p>
-                    </div>
                     <pre id="christmas-tree"></pre>
                 </div>
             </div>
