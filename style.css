@@ -430,3 +430,19 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.result-container {
+    margin-top: 20px;
+    text-align: center;
+    color: #00ffff;
+    font-size: 1.2rem;
+}
+
+.result-container img {
+    width: 200px;
+    height: auto;
+    margin-top: 10px;
+    border: 2px solid #00ffff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #00ffff;
+}

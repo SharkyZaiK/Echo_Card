@@ -1,36 +1,31 @@
-// 動態數據滾動效果
-const dataElement = document.getElementById("data");
-let data = "Loading Data...";
-
-setInterval(() => {
-    data += " | Echo Bot Active >_o";
-    dataElement.textContent = data;
-}, 500);
-
 // 聖誕樹動畫
 const treeElement = document.getElementById("christmas-tree");
-const treeLines = [
-    "         *         ",
-    "        ***        ",
-    "       *****       ",
-    "      *******      ",
-    "     *********     ",
-    "    ***********    ",
-    "   *************   ",
-    "        |||        ",
-];
 
-let currentLine = 0;
+if (treeElement) {
+    const treeLines = [
+        "         *         ",
+        "        ***        ",
+        "       *****       ",
+        "      *******      ",
+        "     *********     ",
+        "    ***********    ",
+        "   *************   ",
+        "        |||        ",
+    ];
 
-function showTree() {
-    if (currentLine < treeLines.length) {
-        treeElement.textContent += treeLines[currentLine] + "\n";
-        currentLine++;
-        setTimeout(showTree, 500); // 每 500 毫秒顯示一行
+    let currentLine = 0;
+
+    function showTree() {
+        if (currentLine < treeLines.length) {
+            treeElement.textContent += treeLines[currentLine] + "\n";
+            currentLine++;
+            setTimeout(showTree, 500); // 每 500 毫秒顯示一行
+        }
     }
+
+    showTree();
 }
 
-showTree();
 
 // 鼠標跟隨光標效果
 const cursor = document.getElementById("cursor");
@@ -39,39 +34,29 @@ document.addEventListener("mousemove", (e) => {
     cursor.style.top = `${e.clientY}px`;
 });
 
-// 按鈕點擊事件與音效播放
-document.getElementById("btn1").addEventListener("click", () => {
-    playSound("path/to/sound1.mp3");
-    alert("Option 1 Selected!");
-});
-
-document.getElementById("btn2").addEventListener("click", () => {
-    playSound("path/to/sound2.mp3");
-    alert("Option 2 Selected!");
-});
-
-document.getElementById("btn3").addEventListener("click", () => {
-    playSound("path/to/sound3.mp3");
-    alert("Option 3 Selected!");
-});
-
-function playSound(src) {
-    const audio = new Audio(src);
-    audio.play();
-}
-
 
 document.addEventListener("DOMContentLoaded", () => {
     const guessInput = document.getElementById("guess-input");
     const guessButton = document.getElementById("guess-button");
+    const feedback = document.getElementById("guess-feedback");
+    const resultContainer = document.getElementById("guess-result");
+
+    const correctAnswers = ["迴音", "echo", "Echo"];
 
     guessButton.addEventListener("click", () => {
-        const userGuess = guessInput.value.trim().toLowerCase();
-        if (userGuess === "迴音"||"Echo"||"echo") {
-            alert("你猜對了!");
+        const userGuess = guessInput.value.trim();
+        resultContainer.innerHTML = ""; // 清空結果區域
+
+        if (correctAnswers.includes(userGuess)) {
+            // 顯示迴音的圖片和台詞
+            resultContainer.innerHTML = `
+                <img src="./image/echo.png" alt="迴音" />
+                <p>「我的媽呀!真會猜!」</p>
+            `;
         } else {
-            alert("再猜猜看?");
+            alert("再猜猜看?不要打錯我的名子。");
         }
+
         guessInput.value = ""; // 清空輸入框
     });
 });
