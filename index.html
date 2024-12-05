@@ -1,27 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-//test//
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futuristic Page</title>
+    <title>Futuristic Interface</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <button class="button" id="close-btn">Close</button>
-            <button class="button" id="back-btn">Back</button>
+    <div class="main-screen">
+        <div class="mail-header">
+            <div class="mail-title">聖誕快樂，我的朋友!</div>
+            <div class="mail-controls">
+                <span class="mail-button minimize">-</span>
+                <span class="mail-button close">x</span>
+            </div>
         </div>
-        <div class="text-content">
-            <p>Welcome to the futuristic page. This is a simulation of a sci-fi styled document.</p>
-            <p>Click the button below for a hidden surprise:</p>
-            <button class="button" id="reveal-btn">Reveal Hidden Message</button>
+        <div class="mail-content">
+            <p>這是一封科幻風格的信件內容，展示一個模擬郵件樣式的介面。</p>
+            <p>您可以在此處插入更多文字內容或者其他元素來豐富界面。</p>
         </div>
-        <div class="hidden-message" id="hidden-msg">
-            <p>This is a hidden message, revealed only to the worthy!</p>
+        <div class="content">
+            <!-- 視窗 1 -->
+            <div class="window-container">
+                <div class="window-header">
+                    <div class="window-title">System Info</div>
+                    <div class="window-controls">
+                        <span class="control close">-</span>
+                        <span class="control minimize">=</span>
+                        <span class="control maximize">x</span>
+                    </div>
+                </div>
+                <div class="window-content">
+                    <p>Loading system diagnostics...</p>
+                    <p>Merry Christmas</p>
+                    <button class="action-button">禮物清單</button>
+                    <button class="action-button">猜猜我是誰?</button>
+                    
+                </div>
+            </div>
+
+            <!-- 視窗 2 -->
+            <div class="window-container">
+                <div class="window-header">
+                    <div class="window-title">Data Stream</div>
+                    <div class="window-controls">
+                        <span class="control close">-</span>
+                        <span class="control minimize">=</span>
+                        <span class="control maximize">x</span>
+                    </div>
+                </div>
+                <div class="window-content">
+                    <div class="data-stream">
+                        <p id="data">Initializing...</p>
+                    </div>
+                    <pre id="christmas-tree"></pre>
+                </div>
+            </div>
+
         </div>
     </div>
+    <div id="cursor"></div>
     <script src="script.js"></script>
 </body>
 </html>
