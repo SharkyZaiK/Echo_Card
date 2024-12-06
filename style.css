@@ -10,6 +10,16 @@ body {
     height: 100%;
 }
 
+#snow-canvas {
+    position: fixed; /* 固定畫布在視窗上 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* 讓畫布不會阻止用戶點擊其他元素 */
+    z-index: 1000; /* 確保畫布層級最高 */
+}
+
 .main-screen {
     position: relative;
     width: 80%;
@@ -40,6 +50,7 @@ body {
     align-items: center;
     padding: 30px 20px;
     color: #00ffff;
+    margin-top: 20px;
     margin-bottom: 20px;
     font-size: 22px;
     font-family: 'CustomFont', monospace;
@@ -53,6 +64,7 @@ body {
     width: 100%; /* 文字容器占滿可用空間 */
     font-family: "Customfont";
     color:#00ffff;
+    margin-left: 15px;
 
 }
 /* 按鈕區域 */
@@ -97,7 +109,6 @@ body {
     box-shadow: 
     0 0 10px #ffffff, /* 發光的核心 */
     0 0 20px #ffffff; /* 發光的擴散 */
-   
     margin-bottom: 20px; /* 與其他區塊的間距 */
     border: 1px solid rgba(255, 255, 255, 0.3); /* 半透明邊框 */
 }
@@ -107,6 +118,10 @@ body {
     justify-content: space-between;
     margin-top: 10px;
     gap:20px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
 }
 
 /* 視窗樣式 */
@@ -116,6 +131,7 @@ body {
     max-width: 400px;
     height: auto;
     margin-bottom: 20px;
+    margin: 10px;
     background: rgba(0, 52, 104, 0.53); /* 半透明背景 */
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -126,6 +142,7 @@ body {
     0 0 10px #3cf2ff; /* 發光的擴散 */
     display: flex;
     flex-direction: column;
+
 }
 /* 視窗標題欄 */
 .window-header {
@@ -159,10 +176,10 @@ body {
 
 .control.close {
     background: none;
-    border: 1px solid #00ffff;
-    color: #00ffff;
-    width: 10px;
-    height: 10px;
+    border: 1px solid #001284;
+    color: #001284;
+    width: 12px;
+    height: 12px;
     border-radius: 50%; /* 圓形按鈕 */
     font-size: 14px;
     display: flex;
@@ -173,10 +190,10 @@ body {
 
 .control.minimize {
     background: none;
-    border: 1px solid #00ffff;
-    color: #00ffff;
-    width: 10px;
-    height: 10px;
+    border: 1px solid #001284;
+    color: #001284;
+    width: 12px;
+    height: 12px;
     border-radius: 50%; /* 圓形按鈕 */
     font-size: 14px;
     display: flex;
@@ -187,10 +204,10 @@ body {
 
 .control.maximize {
     background: none;
-    border: 1px solid #00ffff;
-    color: #00ffff;
-    width: 10px;
-    height: 10px;
+    border: 1px solid #001284;
+    color: #001284;
+    width: 12px;
+    height: 12px;
     border-radius: 50%; /* 圓形按鈕 */
     font-size: 14px;
     display: flex;
@@ -203,9 +220,10 @@ body {
 .window-content {
     flex: 1;
     padding: 10px;
-    color: white;
+    color: #ffffff;
     font-size: 14px;
     text-align: left;
+    margin-left: 10px;
 }
 
 /* 按鈕樣式 */
@@ -252,11 +270,13 @@ body {
 .neon-marquee {
     position: absolute;
     top: 10px; /* 距離頂部的距離 */
-    right: 100px; /* 距離右邊的距離 */
-    width: calc(100% - 200px); /* 寬度自適應，避免過於靠右 */
+    left: 10px;
+    right: 80px; /* 距離右邊的距離 */
+    width: calc(100% - 100px); /* 寬度自適應，避免過於靠右 */
     overflow: hidden; /* 限制內容不超出 */
     white-space: nowrap; /* 確保文字在一行內 */
     border: 1px solid rgba(255, 255, 255, 0); /* 可選的邊框 */
+    background-color: #ffffff11;
     z-index: 1;
     border-radius: 5px;
 }
@@ -264,16 +284,18 @@ body {
 /* 跑馬燈文字樣式 */
 .neon-marquee span {
     display: inline-block;
-    color: #ffffff; /* 霓虹色文字 */
-    font-size: 14px;
+    color: #fbcb6a; /* 霓虹色文字 */
+    font-size: 16px;
     font-family: "Roboto Mono";
-    animation: scroll 10s linear infinite; /* 跑馬燈動畫 */
+    animation-delay: 0s; /* 確保不延遲 */
+    animation-fill-mode: forwards; /* 確保狀態向前維持 */
+    animation: scroll 45s linear infinite; /* 跑馬燈動畫 */
 }
 
 /* 跑馬燈動畫效果 */
 @keyframes scroll {
     0% {
-        transform: translateX(100%); /* 從右側開始 */
+        transform: translateX(0%); /* 從右側開始 */
     }
     100% {
         transform: translateX(-100%); /* 向左側移動直到消失 */
@@ -329,6 +351,7 @@ body {
     .window-container {
         width: 100%; /* 單列顯示 */
         margin-bottom: 15px; /* 保留底部間距 */
+        margin: 10px 0;
     }
 }
 
@@ -399,16 +422,22 @@ body {
 
 /* 內容樣式 */
 .window-content {
+    line-height: 1.8; /* 設定文字行高，讓內容更舒適易讀 */
+    margin: 10px 0; /* 增加文字上下空間 */
     padding: 10px;
     color: #00ffff;
     text-align: center;
+    text-align: left;
+    font-size: 16px;
 }
 
 /* 禮物圖片 */
 .gift-icon {
-    width: 50%;
+    width: auto;
+    max-height: 150px;
     margin: 10px auto;
     display: block;
+    margin-bottom: 30px;
 }
 
 /* 輸入框和按鈕 */
@@ -422,13 +451,27 @@ body {
 }
 
 #guess-button {
-    padding: 5px 15px;
-    font-size: 16px;
-    background: #002b40;
-    color: #00ffff;
-    border: 1px solid #00ffff;
-    border-radius: 5px;
+    background: linear-gradient(to right, #00b3ff, #00ffff);
+    border: none;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border-radius: 10px;
     cursor: pointer;
+    box-shadow: 0 0 15px #00ffff;
+    transition: all 0.3s ease;
+}
+
+#guess-button:hover {
+    background: linear-gradient(to right, #00ffff, #00b3ff);
+    box-shadow: 0 0 25px #00b3ff;
+    transform: scale(1.1);
+}
+
+#guess-button:active {
+    transform: scale(0.95);
 }
 
 .result-container {
@@ -445,4 +488,92 @@ body {
     border: 2px solid #00ffff;
     border-radius: 10px;
     box-shadow: 0 0 15px #00ffff;
+}
+
+.hint-container {
+    margin-top: 10px;
+    color: #00ffff; /* 提示字體顏色 */
+    font-size: 1rem;
+    text-align: center;
+    text-align: left;
+    display: none; /* 初始隱藏 */
+    line-height: 1.5;
+}
+
+#hint-button {
+    background: linear-gradient(to right, #00b3ff, #00ffff);
+    border: none;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #00ffff;
+    transition: all 0.3s ease;
+}
+
+#hint-button:hover {
+    background: linear-gradient(to right, #00ffff, #00b3ff);
+    box-shadow: 0 0 25px #00b3ff;
+    transform: scale(1.1);
+}
+
+#hint-button:active {
+    transform: scale(0.95);
+}
+
+#christmas-tree, #snowman {
+    white-space: pre;
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+
+.countdown-container {
+    background: rgba(0, 255, 255, 0.1); /* 半透明背景 */
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    color: #00ffff; /* 霓虹色文字 */
+    text-align: center;
+    margin: 20px auto;
+    width: fit-content;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+#countdown span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0 5px;
+}
+
+.countdown-container h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #00ffff;
+}
+
+.inline-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #00ffff; /* 字体颜色 */
+    display: inline-block;
+}
+
+.inline-countdown {
+    display: inline-block;
+    padding: 2px 5px;
+    background: rgba(0, 255, 255, 0.1); /* 淡蓝背景 */
+    border: 1px solid rgba(0, 255, 255, 0.5); /* 边框颜色 */
+    border-radius: 5px; /* 圆角 */
+    font-size: 16px; /* 字体大小 */
+    color: #00ffff; /* 倒数字体颜色 */
+}
+
+.inline-countdown span {
+    font-weight: bold;
 }

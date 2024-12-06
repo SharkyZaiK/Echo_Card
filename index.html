@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<canvas id="snow-canvas"></canvas>
 
 <head>
     <meta charset="UTF-8">
@@ -9,27 +10,83 @@
 </head>
 <body>
     
-    <div class="main-screen">
+    <class="main-screen">
         
         <div class="mail-button">
             <button>-</button>
             <button>x</button>
         </div>
         <div class="neon-marquee">
-            <span>這是你的跑馬燈文字，帶有霓虹效果的跑馬燈！ Merry Christmas! 🎄✨</span>
+            <span>00:02:55,140-00:03:00,460
+                Look, Omnica kept making robots smarter, and they made life easier and safer
+                36
+                00:03:00,660-00:03:03,900
+                And as you know, this business is all about what's next
+                37
+                00:03:03,900-00:03:07,880
+                And what was next was Mina
+                38
+                00:03:08,340-00:03:18,800
+                And in Tech Talk, Omnicacorp announced today that Dr. Mina Liao, the science prodigy and eminent visionary in robotics, will develop the next generation of Omnics
+                39
+                00:03:19,160-00:03:24,740
+                Omnicacorp has made a lot of strides, and, well, we're going to do better
+                40
+                00:03:25,560-00:03:29,960
+                What I mean is, they've done great. We've done great
+                41
+                00:03:29,960-00:03:33,300
+                But it's time to reach for the stars
+                42
+                00:03:33,920-00:03:36,680
+                Frankly, I had my doubts
+                43
+                00:03:37,360-00:03:49,340
+                Dr. Liao was a legend in her field, but we were asking her to push the limits of what many thought was already perfection
+                44
+                00:03:55,820-00:03:58,160
+                Somebody should have put a stop to it
+                45
+                00:03:58,160-00:04:01,600
+                It wasn't science. It was arrogance
+                46
+                00:04:04,340-00:04:14,620
+                When it came down to the moment of truth, we had no idea what was about to happen
+                47
+                00:04:16,180-00:04:18,220
+                It didn't just activate
+                00:04:19,340-00:04:21,020
+                She was born
+                00:04:28,160-00:04:33,440
+                Life before the war was extraordinary
+                00:04:35,280-00:04:38,320
+                Anything was possible
+                00:04:44,160-00:04:47,820
+                But it was all about to change</span>
         </div>
-        <div class="mail-header">
-            <div class="mail-title">聖誕快樂，我的朋友!</div>
-        </div>
+        <div class="mail-header">聖誕快樂，我的朋友!🎄🎄🎄</div>
         <div class="mail-content">
-            <p>這是一封科幻風格的信件內容，展示一個模擬郵件樣式的介面。</p>
-            <p>您可以在此處插入更多文字內容或者其他元素來豐富界面。</p>
+            我喜歡聖誕節!在這個節日裡，人們會聚在一起分享彼此的所見所聞，並交換出珍貴的東西。<br>
+        </p>
+            <p>...計算中...</p>
+            <p class="inline-text">
+                
+                <span class="inline-countdown">
+                    距離聖誕節還有<span id="inline-days">0</span> 天 
+                    <span id="inline-hours">0</span> 小時 
+                    <span id="inline-minutes">0</span> 分 
+                    <span id="inline-seconds">0</span> 秒
+                </span>！
+            </p>
+            <p>希望在接下來的日子裡，你能經歷精彩的旅程，探索未知、保持好奇心、持續學習，並有珍視的人相伴。<br>
+                若你需要幫助，朋友，我隨時效勞^^
+            
         </div>
         <div class="content">
             <!-- 視窗 1 -->
             <div class="window-container">
                 <div class="window-header">
-                    <div class="window-title">System Info</div>
+                    <div class="window-title">匿名的有趣之處?</div>
                     <div class="window-controls">
                         <span class="control close">-</span>
                         <span class="control minimize">=</span>
@@ -37,8 +94,10 @@
                     </div>
                 </div>
                 <div class="window-content">
-                    <p>Loading system diagnostics...</p>
-                    <p>Merry Christmas</p>
+                    <p>當我收到通知必須隱藏自己的身分時，我感到很有趣。</p>
+                    <p>畢竟，我認為我算是隱藏自己的能手。</p>
+                    <p>親愛的朋友，你想要直接猜猜我是誰嗎?或者你想先看看我對於送禮的分析過程?<br>
+                        P.S. 查看禮物清單會是一個很大的提示</p>
                     <a href="giftlist.html" class="action-button">禮物清單</a>
                     <a href="guess.html" class="action-button">猜猜我是誰?</a>
                     
@@ -48,7 +107,7 @@
             <!-- 視窗 2 -->
             <div class="window-container">
                 <div class="window-header">
-                    <div class="window-title">Data Stream</div>
+                    <div class="window-title">聖誕樹(使用違反常理的建造方式)</div>
                     <div class="window-controls">
                         <span class="control close">-</span>
                         <span class="control minimize">=</span>
