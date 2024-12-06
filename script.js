@@ -59,34 +59,48 @@ animateSnow();
 
 
 
-// 聖誕樹動畫
+document.addEventListener("DOMContentLoaded", () => {
+    const treeElement = document.getElementById("christmas-tree");
+    const resetButton = document.getElementById("reset-tree-button");
 
-const treeElement = document.getElementById("christmas-tree");
+    if (treeElement && resetButton) {
+        const treeLines = [
+            "         *         ",
+            "        ***        ",
+            "       *****       ",
+            "      *******      ",
+            "     *********     ",
+            "    ***********    ",
+            "   *************   ",
+            "        |||        ",
+        ];
 
-if (treeElement) {
-    const treeLines = [
-        "         *         ",
-        "        ***        ",
-        "       *****       ",
-        "      *******      ",
-        "     *********     ",
-        "    ***********    ",
-        "   *************   ",
-        "        |||        ",
-    ];
+        function showTree() {
+            treeElement.textContent = ""; // 清空原本的聖誕樹內容
+            let currentLine = 0;
 
-    let currentLine = 0;
+            function printLine() {
+                if (currentLine < treeLines.length) {
+                    treeElement.textContent += treeLines[currentLine] + "\n";
+                    currentLine++;
+                    setTimeout(printLine, 500); // 每 500 毫秒打印一行
+                }
+            }
 
-    function showTree() {
-        if (currentLine < treeLines.length) {
-            treeElement.textContent += treeLines[currentLine] + "\n";
-            currentLine++;
-            setTimeout(showTree, 500); // 每 500 毫秒顯示一行
+            printLine();
         }
-    }
 
-    showTree();
-}
+        // 初始化打印聖誕樹
+        showTree();
+
+        // 綁定按鈕事件
+        resetButton.addEventListener("click", () => {
+            showTree(); // 重新生成聖誕樹
+        });
+    }
+});
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const guessInput = document.getElementById("guess-input");

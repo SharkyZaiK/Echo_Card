@@ -531,6 +531,23 @@ body {
     text-align: center;
 }
 
+#reset-tree-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #00ffff;
+    color: #001F33;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: "customfont";
+}
+
+#reset-tree-button:hover {
+    background-color: #0099cc;
+}
+
 
 .countdown-container {
     background: rgba(0, 255, 255, 0.1); /* 半透明背景 */
